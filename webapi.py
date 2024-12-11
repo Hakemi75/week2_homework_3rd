@@ -6,17 +6,17 @@ import time
 response = requests.get("https://hacker-news.firebaseio.com/v0/topstories.json")
 topstories = response.json()
 
-print(topstories[:30])
-
+# print(topstories[:30])
+time.sleep(1)
 for i in topstories[:30]:
     response_article = requests.get(f"https://hacker-news.firebaseio.com/v0/item/{i}.json")
     article = response_article.json()
     # print(art_30)
     if article.get("title") and article.get("url"):
-        print({"title": article["title"], "link": article["url"]})
+        print(f"'title': '{article["title"]}', 'link': '{article["url"]}'")
         # print(f"title: {art_30["title"]}, link: {art_30["url"]}")
     else:
-        print(f"'title: {article["title"]}', 'link: {None}'")
+        print(f"'title': '{article["title"]}', 'link': '{None}'")
 
     time.sleep(1)
 # response = requests.get("https://hacker-news.firebaseio.com/v0")
